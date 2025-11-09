@@ -6,16 +6,27 @@ Model attained 75% evaluation accuracy when classifying the data belonging to th
 ['bernoulli', 'betabinom', 'betanbinom', 'binom', 'boltzmann', 'dlaplace', 'geom', 'hypergeom', 'logser', 'nbinom', 'nchypergeom_fisher', 'nchypergeom_wallenius', 'nhypergeom', 'planck', 'poisson', 'poisson_binom', 'randint', 'skellam', 'yulesimon', 'zipf', 'zipfian']
 
 How to use (example code):
+
 #Have some data with shape (1024), for example,
-\ndata = scipy.stats.poisson.rvs(mu=3, size=1024)
+
+data = scipy.stats.poisson.rvs(mu=3, size=1024)
+
 data = data.astype(np.float32) #make dataset correct data type
+
 data = data.reshape(1024, 1) #reshape the data to fit keras model input
+
 data = np.expand_dims(data, axis=0) #reshape that data again to fit keras model input
+
 model = tf.keras.models.load_model('file_path_and_name.keras') #load keras model into Python
+
 prediction = model.predict(data) #predict the statistical distribution of you dataset
+
 print(prediction[0]) #This gives the result
+
 #alternatively you can plot the prediction
+
 import matplotlib.pyplot as plt
+
 plt.bar([i for i in range(21), prediction[0])
 
 Interpreting the result:
