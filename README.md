@@ -1,7 +1,7 @@
 # statspal
 Neural net made in TensorFlow to determine the statistical distribution governing a dataset. Intended use is to better understand the relevant statistics of a dataset, and give an informed choice of function to fit data to in standard curve fitting algorithms (non-linear regression) like SciPy's opt.curve_fit().
 
-##################################### Model's Accuracy #######################################
+##################################### Model's Accuracy ####################################
 
 Model attained 75% evaluation accuracy when classifying the data belonging to the following scipy.stats discrete distributions:
 
@@ -16,7 +16,7 @@ Planck: f(k) = (1-exp(-L))exp(-Lk)
 
 Scipy's documentation for the Planck distribution even notes "planck takes L as shape parameter. The Planck distribution can be written as a geometric distribution (geom) with p = 1-exp(-L) shifted by loc = -1."
 
-################################ How to use (example code): ##################################
+################################ How to use (example code): ###############################
 
 #Have some data with shape (1024), for example,
 
