@@ -8,7 +8,8 @@ Model attained 75% evaluation accuracy when classifying the data belonging to th
 ['bernoulli', 'betabinom', 'betanbinom', 'binom', 'boltzmann', 'dlaplace', 'geom', 'hypergeom', 'logser', 'nbinom', 'nchypergeom_fisher', 'nchypergeom_wallenius', 'nhypergeom', 'planck', 'poisson', 'poisson_binom', 'randint', 'skellam', 'yulesimon', 'zipf', 'zipfian']
 
 #Notes on model's shortcomings:
-The model has hard time distinguishing between the geometric, boltzmann (not to be confused with the maxwell-boltzmann distribution), and planck distributions. Qualitatively this makes sense, as they all exhibit monotone decreasing curves with a shape that looks roughly like a decreasing exponential. Analytically, based on the following functional forms, it is apparent that the distributions share nearly identical pdfs:
+
+1. The model has hard time distinguishing between the geometric, boltzmann (not to be confused with the maxwell-boltzmann distribution), and planck distributions. Qualitatively this makes sense, as they all exhibit monotone decreasing curves with a shape that looks roughly like a decreasing exponential. Analytically, based on the following functional forms, it is apparent that the distributions share nearly identical pdfs:
 
 Geom: f(k) = ((1-p)^(k-1))p
 Boltzmann: f(k) = (1-exp(-L))exp(-Lk)/(1-extp(-LN))
@@ -16,6 +17,13 @@ Planck: f(k) = (1-exp(-L))exp(-Lk)
 
 Scipy's documentation for the Planck distribution even notes "planck takes L as shape parameter. The Planck distribution can be written as a geometric distribution (geom) with p = 1-exp(-L) shifted by loc = -1."
 
+2. The model also struggles to distinguish variations on the hypergeometric distributions, namely:
+
+hypergeom
+nchypergeom_fisher
+nchypergeom_wallenius
+
+Qualitatively they are similar in shape, and analytically their pdfs are similar. See the scipy documentaion for their pdfs.
 ################################ How to use (example code): ###############################
 
 #Have some data with shape (1024), for example,
