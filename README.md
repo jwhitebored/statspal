@@ -1,11 +1,21 @@
 # statspal
 Neural net made in TensorFlow to determine the statistical distribution governing a dataset. Intended use is to better understand the relevant statistics of a dataset, and give an informed choice of function to fit data to in standard curve fitting algorithms (non-linear regression) like SciPy's opt.curve_fit().
 
+##################################### Model's Accuracy #######################################
 Model attained 75% evaluation accuracy when classifying the data belonging to the following scipy.stats discrete distributions:
 
 ['bernoulli', 'betabinom', 'betanbinom', 'binom', 'boltzmann', 'dlaplace', 'geom', 'hypergeom', 'logser', 'nbinom', 'nchypergeom_fisher', 'nchypergeom_wallenius', 'nhypergeom', 'planck', 'poisson', 'poisson_binom', 'randint', 'skellam', 'yulesimon', 'zipf', 'zipfian']
 
-How to use (example code):
+#Notes on model's shortcomings:
+The model has hard time distinguishing between the geometric, boltzmann, and planck distributions. Qualitatively this makes sense, as they all exhibit monotone decreasing curves with a shape that looks roughly like a decreasing exponential. Analytically, based on the following functional forms, it is apparent that the distributions share nearly identical pdfs:
+
+Geom: f(k) = ((1-p)^(k-1))p
+Boltzmann: f(k) = (1-exp(-L))exp(-Lk)/(1-extp(-LN))
+Planck: f(k) = (1-exp(-L))exp(-Lk)
+
+Scipy's documentation for the Planck distribution even notes "planck takes L as shape parameter. The Planck distribution can be written as a geometric distribution (geom) with p = 1-exp(-L) shifted by loc = -1."
+
+################################ How to use (example code): ##################################
 
 #Have some data with shape (1024), for example,
 
