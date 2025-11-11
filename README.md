@@ -40,12 +40,14 @@ import matplotlib.pyplot as plt
 
 plt.bar([i for i in range(21), prediction[0])
 
-Interpreting the result:
+################################ Interpreting the result ################################
+
 prediction[0] gives an array of shape (21), where the ith entry corresponds to the relative likelihood that distribution i (according to the distribution order listed above) models your data best out of all 21 discrete distributions. For example, if prediction[0][0] has a greater value than any other prediction[0][i] value, then your data is best modeled by a 'bernoulli' distribution. Similary prediction[0][1] stands for 'betabinom', prediction[0][2] stands for 'betanbinom', etc.
 
 Note: to downsample or upsample your dataset to fit the input size of the keras model (1024 data points), please see the downsampling and upsampling scripts in this repository.
 
-Future updates:
+################################ Future updates ################################
+
 1. Model will train on both scipy's continuous and discrete distributions, and thus have a broader classification ability.
 2. Model architecture/weights will be converted to depend only on numpy, not tensorflow.
 3. Model will be integrated into a Python package to easily extend scipy's stats and optimization packages.
