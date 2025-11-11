@@ -7,6 +7,8 @@ Model attained 75% evaluation accuracy when classifying the data belonging to th
 
 ['bernoulli', 'betabinom', 'betanbinom', 'binom', 'boltzmann', 'dlaplace', 'geom', 'hypergeom', 'logser', 'nbinom', 'nchypergeom_fisher', 'nchypergeom_wallenius', 'nhypergeom', 'planck', 'poisson', 'poisson_binom', 'randint', 'skellam', 'yulesimon', 'zipf', 'zipfian']
 
+Please see the confusion_matrix.png image for an illustration of the evaluation.
+
 #Notes on model's shortcomings:
 
 1. The model has hard time distinguishing between the geometric, boltzmann (not to be confused with the maxwell-boltzmann distribution), and planck distributions. Qualitatively this makes sense, as they all exhibit monotone decreasing curves with a shape that looks roughly like a decreasing exponential. Analytically, based on the following functional forms, it is apparent that the distributions share nearly identical pdfs:
