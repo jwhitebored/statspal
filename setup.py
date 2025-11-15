@@ -32,6 +32,6 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Mathematics",
         "Topic :: Software Development :: Libraries :: Python Modules"
     ],
-    python_requires='>=3.8, <3.11',
+    python_requires='>=3.8, <=3.11',
 
 )
