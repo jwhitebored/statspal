@@ -51,7 +51,7 @@ output gives an array of shape (21), where the ith entry corresponds to the rela
 
 Note: the .onnx model (a neural network) takes numpy arrays of shape (1024), so any other array size is down-sampled or up-sampled to 1024 before being fed into the network. This re-sampling is done in a manner to preserve the statistics of the original dataset, and the methods to do so can be inspected in the source code's _downsample_data and _upsample_data methods.
 
-################################ Future updates ################################
+# Future updates
 
 1. Model will train on both scipy's continuous and discrete distributions, and thus have a broader classification ability.
 
