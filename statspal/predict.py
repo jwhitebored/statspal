@@ -160,10 +160,8 @@ except Exception as e:
     print(f"CRITICAL ERROR loading ONNX model '{MODEL_NAME}': {e}")
 
 def predict(arr):
-    arr = _resize_to_1024(arr)
-    
-    model_path = "statspal_v2.onnx"
-    sess = rt.InferenceSession(MODEL_PATH, providers=rt.get_available_providers())
+    arr = _resize_to_1024(arr)    
+    sess = ONNX_SESSION
     input_name = sess.get_inputs()[0].name
     output_name = sess.get_outputs()[0].name
     input_data = arr.reshape(1, 1024, 1)
