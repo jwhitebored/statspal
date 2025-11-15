@@ -3,7 +3,7 @@
 import numpy as np
 import onnxruntime as rt
 import os
-import importlib.resources
+import importlib.resources as pkg_resources
 
 def _downsample_data(data_array: np.ndarray, FIXED_SEQUENCE_LENGTH = 1024) -> np.ndarray:
     """
@@ -146,11 +146,18 @@ def _resize_to_1024(arr):
         return _upsample_data(arr)
 
 try:
-    # Use files() from importlib.resources to get a Path object to the model
-    MODEL_PATH = str(importlib.resources.files('statspal') / 'statspal_v2.onnx')
-except Exception:
-    # Fallback to local path (only works reliably during development/testing)
-    MODEL_PATH = os.path.join(os.path.dirname(__file__), 'statspal_v2.onnx')
+    # Use the package name ('statspal') and the resource name ('statspal_v2.onnx')
+    with pkg_resources.open_binary('statspal', MODEL_NAME) as model_stream:
+        # Load the ONNX model from the file stream's binary content
+        ONNX_SESSION = rt.InferenceSession(model_stream.read()) 
+    
+    INPUT_NAME = ONNX_SESSION.get_inputs()[0].name
+    OUTPUT_NAME = ONNX_SESSION.get_outputs()[0].name
+    
+except Exception as e:
+    # This error handles both the file not being found inside the package 
+    # or the ONNX Runtime failing to initialize the session.
+    print(f"CRITICAL ERROR loading ONNX model '{MODEL_NAME}': {e}")
 
 def predict(arr):
     arr = _resize_to_1024(arr)
