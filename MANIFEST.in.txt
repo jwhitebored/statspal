@@ -1,0 +1,2 @@
+include statspal/statspal_v2.onnx
+include README.md
