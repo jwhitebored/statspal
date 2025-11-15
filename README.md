@@ -2,6 +2,11 @@
 Neural net made in TensorFlow to determine the statistical distribution governing a dataset. Intended use is to better understand the relevant statistics of a dataset, and give an informed choice of function to fit data to in standard curve fitting algorithms (non-linear regression) like SciPy's opt.curve_fit().
 Intended users include students and researchers who are not *yet* enthusiastic about the statistics relevant to their field of research.
 
+# How to Install
+In your python console, run
+
+pip install git+https://github.com/jwhitebored/statspal.git
+
 # Model's Accuracy 
 
 Model attained 75% evaluation accuracy when classifying the data belonging to the following scipy.stats discrete distributions:
