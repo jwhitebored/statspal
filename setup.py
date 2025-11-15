@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Nov 15 03:39:44 2025
-
-@author: who3
-"""
-
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
