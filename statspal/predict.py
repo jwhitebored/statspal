@@ -5,6 +5,13 @@ import onnxruntime as rt
 import os
 import importlib.resources as pkg_resources
 
+MODEL_NAME = 'statspal_v2.onnx' # Filename for the bundled ONNX model
+
+# --- ONNX Setup: Initialized globally using package resources (THE ONLY WAY) ---
+ONNX_SESSION = None
+INPUT_NAME = None
+OUTPUT_NAME = None
+
 def _downsample_data(data_array: np.ndarray, FIXED_SEQUENCE_LENGTH = 1024) -> np.ndarray:
     """
     Downsamples the input data to exactly 1024 points using stratified 
