@@ -5,7 +5,7 @@ Intended users include students and researchers who are not *yet* enthusiastic a
 # How to Install
 Create a virtual environment with Python version 3.11 (the onnx runtime requires 3.8 =< Python < 3.12). If you use conda, run
 
-conda create -n statspal python=3.11 pip numpy==1.26.4
+conda create -n statspal python=3.11 pip
 
 Then activate your virtual env and in your python console, run
 
