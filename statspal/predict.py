@@ -170,3 +170,36 @@ def predict(data_array: np.ndarray | list) -> tuple[np.ndarray, int]:
     predicted_index = np.argmax(probabilities)
     
     return probabilities, predicted_index
+
+def predict_max(arr, verbose=False):
+    prediction = predict(arr)
+    distribution_num = np.argmax(prediction)
+    if verbose == True:
+        print("Predicted Distribution: " + str(distribution_num) + " "
+              + keys()[distribution_num][1]
+              + "\n" + "Probability: " + str(max(prediction)))
+    return np.argmax(prediction), max(prediction)
+
+def keys():
+    discrete_keys = [[0, "bernoulli"],
+                    [1, "betabinom"],
+                    [2, "betanbinom"],
+                    [3, "binom"],
+                    [4, "boltzmann"],
+                    [5, "dlaplace"],
+                    [6, "geom"],
+                    [7, "hypergeom"],
+                    [8, "logser"],
+                    [9, "nbinom"],
+                    [10, "nchypergeom_fisher"],
+                    [11, "nchypergeom_wallenius"],
+                    [12, "nhypergeom"],
+                    [13, "planck"],
+                    [14, "poisson"],
+                    [15, "poisson_binom"],
+                    [16, "randint"],
+                    [17, "skellam"],
+                    [18, "yulesimon"],
+                    [19, "zipf"],
+                    [20, "zipfian"]]
+    return discrete_keys
