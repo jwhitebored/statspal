@@ -41,15 +41,16 @@ Qualitatively they are similar in shape, and analytically their pdfs are similar
 
 #Have some data with 1-dimensional shape, for example,
 
+import scipy #Not a dependency, but you could add this to your python environment
 from statspal.predict import predict, predict_max, keys
 
 data = scipy.stats.poisson.rvs(mu=3, size=1000)
 
-output = predict.predict(data) #returns the activations of the output layer of the neural network
+output = predict(data) #returns the activations of the output layer of the neural network
 
-predicted_distribution = predict.predict_max(a, True) #returns the most activated output
+predicted_distribution = predict_max(a, True) #returns the most activated output
 
-keys = predict.keys() #shows which outputs correspond to which distribution
+distribution_key = keys() #shows which outputs correspond to which distribution
 
 #alternatively you can plot the prediction
 
@@ -60,6 +61,7 @@ plt.bar([i for i in range(21), output)
 # Interpreting the result 
 
 output gives an array of shape (21), where the ith entry corresponds to the relative likelihood that distribution i (according to the distribution order listed above, and given by the keys() function) models your data best out of all 21 discrete distributions. For example, if output[0] has a greater value than any other output[i] value, then your data is best modeled by a 'bernoulli' distribution. Similary output[1] stands for 'betabinom', output[2] stands for 'betanbinom', etc.
+The predict_max() method will give you the most likely distribution (set verbose=True to print the interpretation of the result).
 
 Note: the .onnx model (a neural network) takes numpy arrays of shape (1024), so any other array size is down-sampled or up-sampled to 1024 before being fed into the network. This re-sampling is done in a manner to preserve the statistics of the original dataset, and the methods to do so can be inspected in the source code's _downsample_data and _upsample_data methods.
 
