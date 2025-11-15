@@ -46,7 +46,9 @@ from statspal.predict import predict, predict_max, keys
 data = scipy.stats.poisson.rvs(mu=3, size=1000)
 
 output = predict.predict(data) #returns the activations of the output layer of the neural network
+
 predicted_distribution = predict.predict_max(a, True) #returns the most activated output
+
 keys = predict.keys() #shows which outputs correspond to which distribution
 
 #alternatively you can plot the prediction
