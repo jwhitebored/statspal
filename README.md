@@ -3,7 +3,11 @@ Neural net made in TensorFlow to determine the statistical distribution governin
 Intended users include students and researchers who are not *yet* enthusiastic about the statistics relevant to their field of research.
 
 # How to Install
-In your python console, run
+Create a virtual environment with Python version 3.11 (the onnx runtime requires 3.8 =< Python < 3.12). If you use conda, run
+
+conda create -n statspal python=3.11 pip
+
+Then activate your virtual env and in your python console, run
 
 pip install git+https://github.com/jwhitebored/statspal.git
 
