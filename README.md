@@ -40,6 +40,7 @@ Qualitatively they are similar in shape, and analytically their pdfs are similar
 # How to use (example code): 
 
 #Have some data with 1-dimensional shape, for example,
+
 from statspal.predict import predict, predict_max, keys
 
 data = scipy.stats.poisson.rvs(mu=3, size=1000)
